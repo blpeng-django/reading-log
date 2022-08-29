@@ -1,8 +1,4 @@
-from operator import mod
 from django.db import models
-from rest_framework.serializers import ModelSerializer
-
-# Create your models here.
 
 
 class Book(models.Model):
@@ -12,10 +8,6 @@ class Book(models.Model):
     class Meta:
         db_table = 'books'
 
-class BookSerializer(ModelSerializer):
-    class Meta:
-        model = Book
-        fields = "__all__"
 
 
 class User(models.Model):
@@ -25,10 +17,7 @@ class User(models.Model):
     class Meta:
         db_table = 'users'
 
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
+
 
 class BookUser(models.Model):
     BID = models.ForeignKey('Book', on_delete=models.CASCADE)
@@ -36,8 +25,3 @@ class BookUser(models.Model):
 
     class Meta:
         db_table = 'bookuser'
-
-class BookUserSerializer(ModelSerializer):
-    class Meta:
-        model = BookUser
-        fields = "__all__"
